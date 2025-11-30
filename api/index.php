@@ -1,18 +1,21 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>Newsletter Test</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <div class="container">
-    <h1>Newsletter test</h1>
+<?php
 
-    <form method="POST" action="subscribe.php">
-      <input type="email" name="email" placeholder="Your Email id" required>
-      <button type="submit">Subscribe</button>
-    </form>
-  </div>
-</body>
-</html>
+header('Content-Type: text/plain; charset=utf-8');
+
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    http_response_code(405);
+    echo 'Only POST allowed';
+    exit;
+}
+
+$email = trim($_POST['email'] ?? '');
+
+if ($email === '' || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    http_response_code(400);
+    echo 'Invalid email';
+    exit;
+}
+
+// For now, just confirm it works.
+// Later you can replace this with code that writes to a cloud database.
+echo "Received: " . $email;

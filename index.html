@@ -2,10 +2,17 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Newsletter on Vercel</title>
+  <title>Newsletter Test</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Newsletter on Vercel</h1>
-  <p><a href="/api/index.php">Test PHP endpoint</a></p>
+  <div class="container">
+    <h1>Newsletter test</h1>
+
+    <form method="POST" action="/api/index.php">
+      <input type="email" name="email" placeholder="Your Email id" required>
+      <button type="submit">Subscribe</button>
+    </form>
+  </div>
 </body>
 </html>
